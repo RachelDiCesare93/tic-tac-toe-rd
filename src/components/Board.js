@@ -6,7 +6,7 @@ export default function Board(props){
     let indexCounter = -1;
     const makeNineSquares = props.game.map(()=> {
         indexCounter++
-        return <Square boxindex={indexCounter}
+        return <Square boxIndex={indexCounter}
         checkBoard={props.checkBoard}
         isXTurn={props.isXTurn}
         updateGame={props.updateGame}
