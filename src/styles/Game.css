@@ -1,0 +1,45 @@
+.game {
+ display: flex;
+ justify-content: center;
+ margin-top: 20px;
+}
+
+.team-symbol, .active-player {
+    margin: 10px 80px;
+    font-size: 100px;
+    font-weight: 900;
+    padding: 5px;
+    min-width: 100px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.active-player {
+    border: lightcoral solid;
+    height: 115px;
+}
+
+.team-symbol {
+    border: transparent 20px solid;
+}
+
+
+#reset-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    border-radius: 6px;
+    background-color: yellow;
+    border: lightcoral 4px solid;
+    cursor: pointer;
+}
+
+#reset-button:active {
+    background-color: yellow;
+}
+
+#reset-button:focus {
+    outline: none;
+}

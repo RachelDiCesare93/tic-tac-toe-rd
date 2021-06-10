@@ -1,0 +1,13 @@
+.square {
+    background-color: yellow;
+    width: 200px;
+    height: 200px;
+    border: lightcoral solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.square-text {
+    font-size: 48pt;
+}

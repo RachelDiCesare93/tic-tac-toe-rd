@@ -27,44 +27,73 @@ export default class Game extends React.Component {
         this.setState({ isXTurn: !this.state.isXTurn})
     }
 
+    
     checkForWin = () => {
         let winningCombos = [
-            [0,1,2], [3,4,5], [6,7,8],
-            [0,3,6], [1,4,7]. [2,5,8],
+            [0,1,2], [3,4,5], [6,7,8], 
+            [0,3,6], [1,4,7], [2,5,8], 
             [0,4,8], [2,4,6]
         ]
-        for (let i = 0; i < winningCombos.length; i++) {
+        for(let i = 0; i < winningCombos.length; i++) {
             let checkCombo = []
 
             winningCombos[i].forEach(boxIndex => {
                 checkCombo.push(this.state.game[boxIndex])
             })
 
-            if(checkCombo.every(entry => entry === "X") ||
+            if(checkCombo.every(entry => entry === "X") || 
                 checkCombo.every(entry => entry === "O")) {
-                    
-                    if(checkCombo[0] === "X") {
+
+                if(checkCombo[0] === "X") {
+                    if(this.state.winner !== "O"){
                         this.setState({ winner: "X" })
-                    } else {
-                        this.setState({ winner: "O"})
+                    }
+                } else {
+                    if(this.state.winner !== "X") {
+                        this.setState({ winner: "O" })
                     }
                 }
             }
+        }
+    }
+
+        handleReset = () => {
+            this.setState({
+                game: [
+                    null,null,null,
+                    null,null,null,
+                    null,null,null
+                ],
+                isXTurn: false,
+                winner: null
+            })
         }
 
 
 
     render() {
-        const {game,isXTurn}= this.state
+        const {game,isXTurn,winner}= this.state
         return (
             <div className="game">
-                <Board checkboard={this.checkBoard}
+                <button onClick={this.handleReset} id="reset-button">Reset Game</button>
+                <div className="team">
+                <div className={isXTurn ? "active-player" : "team-symbol"}>
+                    <span>X</span>
+                    </div>
+                    <div className="wins">{winner === "X" ? "Wins!" : null}</div>
+                </div>
+                <Board checkBoard={this.checkBoard}
                 isXTurn={isXTurn}
                 updateGame={this.updateGame}
                 game={game}
                 checkForWin={this.checkForWin}
                 />
-             </div>
+                <div className="game"></div>
+                <div className={isXTurn ? "team-symbol" : "active-player"}>
+                    <span>O</span>
+                    </div>
+                    <div className="wins">{winner === "O" ? "Wins!" : null}</div>
+                </div>
         )
     }
 }

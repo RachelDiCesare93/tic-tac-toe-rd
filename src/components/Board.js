@@ -12,6 +12,7 @@ export default function Board(props){
         updateGame={props.updateGame}
         game={props.game}
         checkForWin={props.checkForWin}
+        winner={props.winner}
         />
     })
 
